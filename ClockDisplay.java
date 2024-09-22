@@ -49,7 +49,8 @@ public class ClockDisplay
     /**
      * This method should get called once every minute - it makes
      * the clock display go one minute forward.
-     * 
+     * It will also check if the hours got rolled over so that it makes hours 1 instead of 0
+     * It will also check if the time went to 12:00 so that it can flip the am boolean
      */
     public void timeTick()
     {
@@ -70,8 +71,8 @@ public class ClockDisplay
     }
 
     /**
-     * Set the time of the display to the specified hour and
-     * minute.
+     * Set the time of the display to the specified hour,
+     * minute, and if the time is AM or PM
      */
     public void setTime(int hour, int minute, boolean beforeNoon)
     {
