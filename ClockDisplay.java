@@ -40,8 +40,10 @@ public class ClockDisplay
     {
         hours = new NumberDisplay(13);
         minutes = new NumberDisplay(60);
-        am = beforeNoon;
-        setTime(hour, minute);
+        
+        if(hour <= 1){
+        hour = 12;}
+        setTime(hour, minute, beforeNoon);
     }
 
     /**
@@ -63,16 +65,20 @@ public class ClockDisplay
         
         }
         
+         updateDisplay();
+        
     }
 
     /**
      * Set the time of the display to the specified hour and
      * minute.
      */
-    public void setTime(int hour, int minute)
+    public void setTime(int hour, int minute, boolean beforeNoon)
     {
-        hours.setValue(hour);
+        if(hour >= 1){
+        hours.setValue(hour);}
         minutes.setValue(minute);
+        am = beforeNoon;
         updateDisplay();
     }
 
