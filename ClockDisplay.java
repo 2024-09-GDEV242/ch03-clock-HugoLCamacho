@@ -41,7 +41,7 @@ public class ClockDisplay
         hours = new NumberDisplay(13);
         minutes = new NumberDisplay(60);
         
-        if(hour <= 1){
+        if(hour < 1 || hour > 12){
         hour = 12;}
         setTime(hour, minute, beforeNoon);
     }
@@ -95,7 +95,12 @@ public class ClockDisplay
      */
     private void updateDisplay()
     {
+        if(am){
         displayString = hours.getDisplayValue() + ":" + 
-                        minutes.getDisplayValue();
+                        minutes.getDisplayValue() + " AM";} else {displayString = hours.getDisplayValue() + ":" + 
+                        minutes.getDisplayValue() + " PM";
+                        
+                        
+                        }
     }
 }
