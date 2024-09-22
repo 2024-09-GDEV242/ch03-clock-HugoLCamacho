@@ -20,12 +20,13 @@ public class ClockDisplay
     
     /**
      * Constructor for ClockDisplay objects. This constructor 
-     * creates a new clock set at 00:00.
+     * creates a new clock set at 12:00 AM.
      */
     public ClockDisplay()
     {
         hours = new NumberDisplay(13);
         minutes = new NumberDisplay(60);
+        hours.setValue(12);
         am=true;
         updateDisplay();
     }
@@ -46,6 +47,7 @@ public class ClockDisplay
     /**
      * This method should get called once every minute - it makes
      * the clock display go one minute forward.
+     * 
      */
     public void timeTick()
     {
@@ -53,7 +55,14 @@ public class ClockDisplay
         if(minutes.getValue() == 0) {  // it just rolled over!
             hours.increment();
         }
-        updateDisplay();
+        
+        if(hours.getValue()== 0){ hours.setValue(1);} 
+        
+        if(hours.getValue() == 12 && minutes.getValue() == 0 ){
+        am = !am;
+        
+        }
+        
     }
 
     /**
